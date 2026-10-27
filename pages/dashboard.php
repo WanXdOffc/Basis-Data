@@ -7,8 +7,8 @@
 $pageTitle  = 'Dashboard';
 $activePage = 'dashboard';
 
-require_once ROOT_PATH . 'includes/header.php';
-require_once ROOT_PATH . 'includes/sidebar.php';
+require_once path('includes/header.php');
+require_once path('includes/sidebar.php');
 
 // ── Fetch stats ──
 $db = getDB();
@@ -32,7 +32,7 @@ $recentOrders = $db->query("
 
 <!-- Main Wrapper -->
 <div class="app-main">
-  <?php require_once ROOT_PATH . 'includes/topbar.php'; ?>
+  <?php require_once path('includes/topbar.php'); ?>
 
   <main class="page-content">
     <h1 class="page-title">Dashboard</h1>
@@ -147,4 +147,4 @@ $recentOrders = $db->query("
   </main>
 </div>
 
-<?php require_once ROOT_PATH . 'includes/footer.php'; ?>
+<?php require_once path('includes/footer.php'); ?>

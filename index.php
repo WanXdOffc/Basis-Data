@@ -5,11 +5,20 @@
  */
 
 // ── Base URL ──
-define('BASE_URL', '/Project-Basdat-Kuliner/');
-define('ROOT_PATH', __DIR__ . '/');
+define('BASE_URL', '/kuliner/');
+// Normalize path for Windows/Linux compatibility
+define('ROOT_PATH', rtrim(str_replace('/', DIRECTORY_SEPARATOR, __DIR__), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR);
+
+/**
+ * Returns an OS-correct absolute path.
+ * Usage: path('config/database.php')
+ */
+function path(string $relative): string {
+    return ROOT_PATH . str_replace('/', DIRECTORY_SEPARATOR, $relative);
+}
 
 // ── Database ──
-require_once ROOT_PATH . 'config/database.php';
+require_once path('config/database.php');
 
 // ── Route ──
 $page = $_GET['page'] ?? 'dashboard';
@@ -30,7 +39,7 @@ if (!in_array($page, $allowedPages)) {
 }
 
 $activePage = $page;
-$pageFile   = ROOT_PATH . 'pages/' . $page . '.php';
+$pageFile = path('pages/' . $page . '.php');
 
 // ── Load Page ──
 if (file_exists($pageFile)) {

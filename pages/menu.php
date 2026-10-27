@@ -6,7 +6,7 @@
 $pageTitle  = 'Menu';
 $activePage = 'menu';
 
-require_once ROOT_PATH . 'config/database.php';
+require_once path('config/database.php');
 $db = getDB();
 
 $alert = null;
@@ -85,12 +85,12 @@ $rows = $db->query("
 
 $kategoriList = $db->query("SELECT id_kategori, nama_kategori FROM kategori_menu ORDER BY nama_kategori");
 
-require_once ROOT_PATH . 'includes/header.php';
-require_once ROOT_PATH . 'includes/sidebar.php';
+require_once path('includes/header.php');
+require_once path('includes/sidebar.php');
 ?>
 
 <div class="app-main">
-  <?php require_once ROOT_PATH . 'includes/topbar.php'; ?>
+  <?php require_once path('includes/topbar.php'); ?>
 
   <main class="page-content">
     <h1 class="page-title">Menu</h1>
@@ -296,4 +296,4 @@ function doDelete(id, nama) {
 }
 </script>
 
-<?php require_once ROOT_PATH . 'includes/footer.php'; ?>
+<?php require_once path('includes/footer.php'); ?>

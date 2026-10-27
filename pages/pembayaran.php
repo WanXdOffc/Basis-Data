@@ -7,7 +7,7 @@
 $pageTitle  = 'Pembayaran';
 $activePage = 'pembayaran';
 
-require_once ROOT_PATH . 'config/database.php';
+require_once path('config/database.php');
 $db = getDB();
 
 $alert = null;
@@ -99,12 +99,12 @@ $rows = $db->query("
     ORDER BY pb.id_pembayaran DESC
 ");
 
-require_once ROOT_PATH . 'includes/header.php';
-require_once ROOT_PATH . 'includes/sidebar.php';
+require_once path('includes/header.php');
+require_once path('includes/sidebar.php');
 ?>
 
 <div class="app-main">
-  <?php require_once ROOT_PATH . 'includes/topbar.php'; ?>
+  <?php require_once path('includes/topbar.php'); ?>
 
   <main class="page-content">
     <h1 class="page-title">Pembayaran</h1>
@@ -342,4 +342,4 @@ function doDelete(id, idPesanan) {
 }
 </script>
 
-<?php require_once ROOT_PATH . 'includes/footer.php'; ?>
+<?php require_once path('includes/footer.php'); ?>
