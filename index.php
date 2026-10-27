@@ -4,10 +4,13 @@
  * Main Entry Point (Front Controller)
  */
 
-// ── Base URL ──
-define('BASE_URL', '/kuliner/');
-// Normalize path for Windows/Linux compatibility
-define('ROOT_PATH', rtrim(str_replace('/', DIRECTORY_SEPARATOR, __DIR__), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR);
+// ── Dynamic Base URL ──
+$scriptDir = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? ''));
+$detectedBase = rtrim($scriptDir, '/') . '/';
+define('BASE_URL', $detectedBase === '//' ? '/' : $detectedBase);
+
+// ── Root Path ──
+define('ROOT_PATH', __DIR__ . DIRECTORY_SEPARATOR);
 
 /**
  * Returns an OS-correct absolute path.
